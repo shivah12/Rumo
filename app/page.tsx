@@ -121,10 +121,9 @@ interface IPricingCardProps {
   benefits: string[]
   oneliner: string;
 }
-
 function PricingCard({ title, price, benefits, oneliner }: IPricingCardProps) {
   return (
-    <div className='h-fit w-full rounded flex flex-col p-8 gap-8 bg-gray-900 rounded bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-20'>
+    <div className='h-fit w-full rounded flex flex-col p-8 gap-8 bg-gray-900 rounded bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-20 relative'>
       <div className='flex flex-col gap-2'>
         <div>
           <h6 className='text-2xl'>{title}</h6>
@@ -134,26 +133,31 @@ function PricingCard({ title, price, benefits, oneliner }: IPricingCardProps) {
           ${price} <span className='text-sm font-normal text-zinc-500'>/ Month</span>
         </p>
       </div>
-      <button className ='bg-fuchsia-700 rounded p-2 text-sm transition-colors hover:bg-fuchsia-800'>Try 7 days free!</button>
+      <button className='bg-fuchsia-700 rounded p-2 text-sm transition-colors hover:bg-fuchsia-800'>Try 7 days free!</button>
       <div className='flex flex-col w-full gap-4'>
-        {benefits.map((benefit, i) => {
-          return (
-            <p key={i} className='text-sm text-zinc-500 flex items-center gap-2'>
-              <span>
-                <CheckCheck />
-              </span>
-              {benefit}
-            </p>
-          )
-        })}
+        {benefits.map((benefit, i) => (
+          <p key={i} className='text-sm text-zinc-500 flex items-center gap-2'>
+            <span>
+              {/* Assuming CheckCheck is an icon component */}
+              <CheckCheck />
+            </span>
+            {benefit}
+          </p>
+        ))}
+      </div>
+      <div className="absolute inset-0 rounded overflow-hidden">
+        <div className="border-2 border-fuchsia-700 hover:border-white rounded-full absolute" style={{
+          animation: 'rotate 2s linear infinite'
+        }}></div>
       </div>
     </div>
   );
 }
 
+
 function Navbar() {
   return (
-    <div className='w-full h-16 backdrop-filter backdrop-blur-xl bg-opacity-20 border-b flex items-center justify-center'>
+    <div className='w-full text-white h-16 backdrop-filter backdrop-blur-xl bg-opacity-20 border-b flex items-center justify-center'>
       <div className='max-w-7xl w-full flex items-center justify-between p-4'>
         <h6 className='font-bold'>Rumo</h6>
         <ul className='flex gap-8'>
