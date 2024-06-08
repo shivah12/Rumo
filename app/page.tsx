@@ -121,9 +121,10 @@ interface IPricingCardProps {
   benefits: string[]
   oneliner: string;
 }
+
 function PricingCard({ title, price, benefits, oneliner }: IPricingCardProps) {
   return (
-    <div className='h-fit w-full rounded flex flex-col p-8 gap-8 bg-gray-900 rounded bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-20 relative'>
+    <div className='h-fit w-full rounded flex flex-col p-8 gap-8 bg-gray-900 rounded bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-20'>
       <div className='flex flex-col gap-2'>
         <div>
           <h6 className='text-2xl'>{title}</h6>
@@ -133,7 +134,7 @@ function PricingCard({ title, price, benefits, oneliner }: IPricingCardProps) {
           ${price} <span className='text-sm font-normal text-zinc-500'>/ Month</span>
         </p>
       </div>
-      <button className='bg-fuchsia-700 rounded p-2 text-sm transition-colors hover:bg-fuchsia-800'>Try 7 days free!</button>
+      <button className ='bg-fuchsia-700 rounded p-2 text-sm transition-colors hover:bg-fuchsia-800'>Try 7 days free!</button>
       <div className='flex flex-col w-full gap-4'>
         {benefits.map((benefit, i) => {
           return (
@@ -146,7 +147,6 @@ function PricingCard({ title, price, benefits, oneliner }: IPricingCardProps) {
           )
         })}
       </div>
-      <div className="absolute inset-0 rounded border-2 border-fuchsia-700 animate-pulse"></div>
     </div>
   );
 }
